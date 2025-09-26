@@ -31,9 +31,9 @@ public class LibroDomain {
                 libro != null &&
                         libro.getExistencia() > 0;
 
-        return libroRepository.findAll()//SELECT * FROM libro; hasta .findAll()
-                .stream() //for(int = 0; i < libros.size(); i++) {libros.get(i)}
-                .filter(filtroLibro.and(disponibilidad))//if (libro.getTitulo.equals...  El predicate va en este nivel
-                .collect(Collectors.toList()); //Si cumple las condiciones, agrega el libro a la lista
+        return libroRepository.findAll()
+                .stream()
+                .filter(filtroLibro.and(disponibilidad))
+                .collect(Collectors.toList());
     }
 }
