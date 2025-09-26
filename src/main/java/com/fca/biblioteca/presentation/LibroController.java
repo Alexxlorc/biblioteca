@@ -12,13 +12,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
+@RequestMapping("/libros")
 public class LibroController {
+
     @Autowired
     private LibroDomain libroDomain;
 
-    @RequestMapping(value = "/libros", method = RequestMethod.GET)
-    public List<Libro> buscarLibrosPorTitulo(@RequestParam String titulo, @RequestParam String edicion) {
+    @RequestMapping(value = "/disponibles", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Libro> buscarLibrosDisponibles(@RequestParam String titulo, @RequestParam String edicion) {
         return libroDomain.buscarLibroPorTitulo(titulo, edicion);
+    }
+
+    @RequestMapping(value = "/todos", method = RequestMethod.RequestMethod.GET)
+    @ResponseBody
+    public List<Libro> buscarTodosLosLibros(@RequestParam String titulo, @RequestParam String edicion) {
+        return libroDomain.buscarLibroTodos(titulo, edicion);
     }
 
 }
